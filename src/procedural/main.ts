@@ -14,10 +14,6 @@ function prompt(query: string): Promise<string> {
   });
 }
 
-export function exit() {
-  process.exit(0);
-}
-
 // 프로젝트 전체 흐름을 제어하는 main 함수
 async function main() {
   /*
@@ -46,8 +42,9 @@ async function main() {
       }
 
       if (choice === 5) {
+        console.log(`프로그램을 종료합니다.`)
         rl.close();
-        exit();
+        process.exit(0);
       }
 
       // 입력받은 값을 숫자로 변환

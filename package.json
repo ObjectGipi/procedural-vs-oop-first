@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "procedural": "tsc && node dist/procedural-calculator.js",
+    "oop-app": "tsc && node dist/oop/main.js",
+    "procedural-app": "tsc && node dist/procedural/main.js",
     "lint": "eslint .",
     "format": "prettier . --write",
     "test": "jest",
