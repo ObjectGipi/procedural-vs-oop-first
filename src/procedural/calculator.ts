@@ -1,4 +1,6 @@
 // 계산을 수행하는 비즈니스 로직
+// 여기에 a, b의 필드를 가지는 것이 더욱 객체지향적인가요?
+// 이렇게 코드를 나눌때의 기준이 아직 어렵습니다...
 export function add(a: number, b: number): number {
   return a + b;
 }

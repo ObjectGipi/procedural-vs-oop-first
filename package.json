@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "oop-app": "tsc && node dist/oop/main.js",
-    "procedural-app": "tsc && node dist/procedural/main.js",
+    "oop-app": "tsc && node dist/oop/index.js",
+    "procedural-app": "tsc && node dist/procedural/app.js",
     "lint": "eslint .",
     "format": "prettier . --write",
     "test": "jest",
     "test-with-tsc": "tsc && node dist/test.js",
-    "test-with-tsNode": "ts-node src/procedural/main.ts"
+    "test-with-tsNode": "ts-node src/procedural/app.ts"
   },
   "keywords": [],
   "author": "",

@@ -14,8 +14,8 @@ function prompt(query: string): Promise<string> {
   });
 }
 
-// 프로젝트 전체 흐름을 제어하는 main 함수
-async function main() {
+// 프로젝트 전체 흐름을 제어하는 app 함수
+async function app() {
   /*
   =================== lint 실험용 코드 추가 ===================
   // const unusedVariable = 'hello'; // 1. 사용하지 않는 변수
@@ -42,7 +42,7 @@ async function main() {
       }
 
       if (choice === 5) {
-        console.log(`프로그램을 종료합니다.`)
+        console.log(`프로그램을 종료합니다.`);
         rl.close();
         process.exit(0);
       }
@@ -83,4 +83,4 @@ async function main() {
   }
 }
 
-main();
+app();
