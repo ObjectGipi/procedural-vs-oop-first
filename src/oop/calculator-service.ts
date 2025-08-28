@@ -1,3 +1,4 @@
+// 계산을 수행하는 비즈니스 로직
 export class CalculatorService {
   public add(a: number, b: number) {
     return a + b;
@@ -8,7 +9,7 @@ export class CalculatorService {
   }
 
   public multiply(a: number, b: number) {
-    return a - b;
+    return a * b;
   }
 
   public divide(a: number, b: number): { quotient: number; remainder: number } {

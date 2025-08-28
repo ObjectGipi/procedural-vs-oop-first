@@ -1,4 +1,3 @@
-// input 기능은 따로 뺴고 console.log 부분도 따로 뺄 수 있지 않나? -> 사용자 입력을 받기 위한 readline 인터페이스 생성
 import readline from 'readline';
 
 // 입력에 관련된 클래스

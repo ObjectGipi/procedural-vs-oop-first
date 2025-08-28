@@ -28,9 +28,6 @@ export class App {
         const choice = await this.inputView.getChoice();
 
         // 예외 발생 시, 콘솔 말고 throw로 처리
-        // 주니어 개발자의 고민
-        // 숫자가 1 ~ 5가 아니면 예외를 던지는 것은 어디 레이어에 제일 맞을까요?
-        // 이렇게 코드를 나눌때의 기준이 아직 어렵습니다...
         if (![1, 2, 3, 4, 5].includes(choice)) {
           throw new Error(`보기 중에서 하나를 선택해주세요.`);
         }
