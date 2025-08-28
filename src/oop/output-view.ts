@@ -1,4 +1,6 @@
 // 출력에 관련된 클래스
+import { CalHistory } from './cal-history';
+
 export class OutputView {
   printMenu() {
     console.log('=== 객체지향 계산기 ===');
@@ -11,8 +13,8 @@ export class OutputView {
     console.log('7. 프로그램 종료');
   }
 
-  printResult(resultString: string) {
-    console.log(resultString);
+  printResult(calHistory: CalHistory) {
+    console.log(`결과: ${calHistory.result}\n${JSON.stringify(calHistory)}`);
   }
 
   printErrorKnown(error: Error) {
@@ -23,11 +25,11 @@ export class OutputView {
     console.log(`알 수 없는 에러`, error);
   }
 
-  printAllHistory() {
-    console.log(`계산 내역\n`)
+  printAllHistory(calHistories: CalHistory[]) {
+    console.log(`계산 내역\n${JSON.stringify(calHistories)}`);
   }
 
   printDelete() {
-    console.log(`계산 내역이 삭제되었습니다.`)
+    console.log(`계산 내역이 삭제되었습니다.`);
   }
 }

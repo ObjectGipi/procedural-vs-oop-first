@@ -1,24 +1,24 @@
 import { OutputView } from './output-view';
 import { InputView } from './input-view';
-import { CalculatorService } from './calculator-service';
+import { CalService } from './cal-service';
+import { CalHistory } from './cal-history';
 
 export class App {
   private inputView: InputView;
   private outputView: OutputView;
-  private calculatorService: CalculatorService;
+  private calService: CalService;
 
   constructor(
     inputView: InputView,
     outputView: OutputView,
-    calculatorService: CalculatorService,
+    calService: CalService,
   ) {
     this.inputView = inputView;
     this.outputView = outputView;
-    this.calculatorService = calculatorService;
+    this.calService = calService;
   }
 
   async run() {
-    console.log(`실행`);
     while (true) {
       try {
         // 메뉴 출력
@@ -40,40 +40,39 @@ export class App {
 
         if (choice === 1) {
           const getNumbers = await this.inputView.getNumbers();
-          const result = this.calculatorService.add(
+          const result = this.calService.add(
             getNumbers.num1,
-            getNumbers.num2,
-          );
-          this.outputView.printResult(`결과: ${JSON.stringify(result)}`, );
+            getNumbers.num2);
+          this.outputView.printResult(result);
         } else if (choice === 2) {
           const getNumbers = await this.inputView.getNumbers();
-          const result = this.calculatorService.subtract(
+          const result: CalHistory = this.calService.subtract(
             getNumbers.num1,
             getNumbers.num2,
           );
-          this.outputView.printResult(`결과: ${result}`);
+          this.outputView.printResult(result);
         } else if (choice === 3) {
           const getNumbers = await this.inputView.getNumbers();
-          const result = this.calculatorService.multiply(
+          const result = this.calService.multiply(
             getNumbers.num1,
             getNumbers.num2,
           );
-          this.outputView.printResult(`결과: ${result}`);
+          this.outputView.printResult(result);
         } else if (choice === 4) {
           const getNumbers = await this.inputView.getNumbers();
-          const result = this.calculatorService.divide(
+          const result = this.calService.divide(
             getNumbers.num1,
             getNumbers.num2,
           );
-          this.outputView.printResult(
-            `결과: ${result.quotient}, ${result.remainder}`,
-          );
+          this.outputView.printResult(result);
         } else if (choice === 5) {
-          this.outputView.printAllHistory();
-          this.calculatorService.readAllHistory();
+          const calHistories = this.calService.readAllCalHistory();
+          this.outputView.printAllHistory(calHistories);
         } else if (choice === 6) {
+          this.calService.deleteCalAllHistory();
           this.outputView.printDelete();
-          this.calculatorService.deleteAllHistory();
+          const calHistories = this.calService.readAllCalHistory();
+          this.outputView.printAllHistory(calHistories);
         }
       } catch (error) {
         if (error instanceof Error) {

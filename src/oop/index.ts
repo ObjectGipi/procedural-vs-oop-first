@@ -1,14 +1,14 @@
 import { InputView } from './input-view';
 import { OutputView } from './output-view';
-import { CalculatorService } from './calculator-service';
+import { CalService } from './cal-service';
 import { App } from './app';
-import {HistoryRepository} from "./history-Repository";
+import { CalHistoryRepository } from './cal-history-Repository';
 
 // 프로그램을 시작시키는 역할 & 의존성 주입
 const inputView = new InputView();
 const outputView = new OutputView();
-const historyRepo = new HistoryRepository();
-const calculatorService = new CalculatorService(historyRepo);
-const app = new App(inputView, outputView, calculatorService);
+const historyRepo = new CalHistoryRepository();
+const calService = new CalService(historyRepo);
+const app = new App(inputView, outputView, calService);
 
 app.run();
