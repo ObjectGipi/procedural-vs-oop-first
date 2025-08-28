@@ -28,37 +28,39 @@ export class App {
         const choice = await this.inputView.getChoice();
 
         // 예외 발생 시, 콘솔 말고 throw로 처리
-        if (![1, 2, 3, 4, 5].includes(choice)) {
+        if (![1, 2, 3, 4, 5, 6, 7].includes(choice)) {
           throw new Error(`보기 중에서 하나를 선택해주세요.`);
         }
 
-        if (choice === 5) {
+        if (choice === 7) {
           console.log(`프로그램을 종료합니다.`);
           this.inputView.close();
           process.exit(0);
         }
 
-        const getNumbers = await this.inputView.getNumbers();
-
         if (choice === 1) {
+          const getNumbers = await this.inputView.getNumbers();
           const result = this.calculatorService.add(
             getNumbers.num1,
             getNumbers.num2,
           );
-          this.outputView.printResult(`결과: ${result}`);
+          this.outputView.printResult(`결과: ${JSON.stringify(result)}`, );
         } else if (choice === 2) {
+          const getNumbers = await this.inputView.getNumbers();
           const result = this.calculatorService.subtract(
             getNumbers.num1,
             getNumbers.num2,
           );
           this.outputView.printResult(`결과: ${result}`);
         } else if (choice === 3) {
+          const getNumbers = await this.inputView.getNumbers();
           const result = this.calculatorService.multiply(
             getNumbers.num1,
             getNumbers.num2,
           );
           this.outputView.printResult(`결과: ${result}`);
         } else if (choice === 4) {
+          const getNumbers = await this.inputView.getNumbers();
           const result = this.calculatorService.divide(
             getNumbers.num1,
             getNumbers.num2,
@@ -66,6 +68,12 @@ export class App {
           this.outputView.printResult(
             `결과: ${result.quotient}, ${result.remainder}`,
           );
+        } else if (choice === 5) {
+          this.outputView.printAllHistory();
+          this.calculatorService.readAllHistory();
+        } else if (choice === 6) {
+          this.outputView.printDelete();
+          this.calculatorService.deleteAllHistory();
         }
       } catch (error) {
         if (error instanceof Error) {

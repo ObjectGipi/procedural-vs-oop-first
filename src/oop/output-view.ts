@@ -6,7 +6,9 @@ export class OutputView {
     console.log('2. 빼기');
     console.log('3. 곱하기');
     console.log('4. 나누기');
-    console.log('5. 프로그램 종료');
+    console.log('5. 계산 내역 보기');
+    console.log('6. 계산 내역 삭제');
+    console.log('7. 프로그램 종료');
   }
 
   printResult(resultString: string) {
@@ -19,5 +21,13 @@ export class OutputView {
 
   printErrorUnKnown(error: unknown) {
     console.log(`알 수 없는 에러`, error);
+  }
+
+  printAllHistory() {
+    console.log(`계산 내역\n`)
+  }
+
+  printDelete() {
+    console.log(`계산 내역이 삭제되었습니다.`)
   }
 }

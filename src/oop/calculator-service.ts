@@ -1,7 +1,15 @@
 // 계산을 수행하는 비즈니스 로직
+import {HistoryRepository} from "./history-Repository";
+
 export class CalculatorService {
+  private historyRepo: HistoryRepository;
+
+  constructor(historyRepo: HistoryRepository) {
+    this.historyRepo = historyRepo;
+  }
+
   public add(a: number, b: number) {
-    return a + b;
+    return this.historyRepo.saveHistory(`add` ,a, b);
   }
 
   public subtract(a: number, b: number) {
@@ -19,5 +27,13 @@ export class CalculatorService {
     const quotient = Math.floor(a / b);
     const remainder = a % b;
     return { quotient, remainder };
+  }
+
+  public readAllHistory() {
+    return this.historyRepo.readAllHistory();
+  }
+
+  public deleteAllHistory() {
+    this.historyRepo.deleteAllHistory();
   }
 }
